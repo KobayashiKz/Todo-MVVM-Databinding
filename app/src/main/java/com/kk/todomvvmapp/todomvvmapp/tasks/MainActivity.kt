@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import com.kk.todomvvmapp.todomvvmapp.R
+import com.kk.todomvvmapp.todomvvmapp.util.ActivityUtil
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,6 +22,20 @@ class MainActivity : AppCompatActivity() {
         setupToolbar()
 
         setupNavigationDrawer()
+
+        // Fragmentの生成
+        val tasksFragment: TasksFragment = findOrCreateViewFragment()
+    }
+
+    /**
+     * タスクリストを管理するTasksFragmentを追加する処理
+     */
+    private fun findOrCreateViewFragment(): TasksFragment {
+        val tasksFragment: TasksFragment = TasksFragment().newInstance()
+        ActivityUtil.addFragmentToActivity(supportFragmentManager,
+            tasksFragment, R.id.contentFrame
+        )
+        return tasksFragment
     }
 
     /**
@@ -69,13 +84,13 @@ class MainActivity : AppCompatActivity() {
         navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.list_navigation_menu_item -> {
-                    // TODO: リストタップ時の処理
+                    // do nothing
                 }
                 R.id.statistics_navigation_menu_item -> {
                     // TODO: タップ時の処理
                 }
                 else -> {
-                    // TODO: その他の処理
+                    // do nothing
                 }
             }
 
