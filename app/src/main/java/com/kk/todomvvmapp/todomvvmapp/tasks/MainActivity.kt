@@ -15,6 +15,12 @@ class MainActivity : AppCompatActivity() {
 
     private var mDrawerLayout: DrawerLayout? = null
 
+    private var mTasksViewModel: TasksViewModel? = null
+
+    companion object {
+        const val TASKS_VIEWMODEL_TAG: String = "tasks_viewmodel_tag"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -25,6 +31,9 @@ class MainActivity : AppCompatActivity() {
 
         // Fragmentの生成
         val tasksFragment: TasksFragment = findOrCreateViewFragment()
+
+        // ViewModelの生成
+//        mTasksViewModel = findOrCreateViewModel()
     }
 
     /**
@@ -37,6 +46,23 @@ class MainActivity : AppCompatActivity() {
         )
         return tasksFragment
     }
+
+    /**
+     * ViewModelの生成
+     * TODO: 処理の追加
+     */
+//    private fun findOrCreateViewModel(): TasksViewModel {
+        // TODO: Injection
+//        val retainedViewModel: ViewModelHolder<TasksViewModel> =
+//            supportFragmentManager.findFragmentByTag(TASKS_VIEWMODEL_TAG)
+//                    as ViewModelHolder<TasksViewModel>
+
+//        if (retainedViewModel != null && retainedViewModel.getViewModel() != null) {
+//            return retainedViewModel.getViewModel()!!
+//        }
+//        else {
+//        }
+//    }
 
     /**
      * ツールバーの初期設定
